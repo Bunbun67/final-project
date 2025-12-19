@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2 class="text-center font-semibold">Login</h2>
+<div class="flex items-center justify-center bg-gray-100">
+    <form method="POST">
+        <input name="name" placeholder="Name" class= "w-full p-1 mb-4 rounded border">
+        <input name="password" type="password" placeholder="Password" class= "w-full p-1 mb-4 rounded border">
+        <button type="submit" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-700 transition-colors border-black">Login</button>
+    </form>
+</div>
+{% endblock %}
