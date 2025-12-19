@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Create Trip{% endblock %}
+
+{% block content %}
+<h2 class="text-center font-semibold">Create a Trip</h2>
+
+<form method="POST">
+    <label for="name">Trip Name</label><br>
+    <input type="text" id="name" name="name" placeholder="Trip Name" class= "w-full p-1 mb-4 rounded border"required><br><br>
+
+    <label for="budget">Trip Budget</label><br>
+    <input type="number" id="budget" name="budget" min="0" step="0.01" class= "w-full p-1 mb-4 rounded border"><br><br>
+
+    <label for="start_date">From: </label><br>
+    <input type="date" id="start_date" name="start_date" class= "w-full p-1 mb-4 rounded border"><br><br>
+
+    <label for="end_date">To: </label><br>
+    <input type="date" id="end_date" name="end_date" class= "w-full p-1 mb-4 rounded border"><br><br>
+
+    <button type="submit" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-700 transition-colors border-black">Create</button>
+</form>
+
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
