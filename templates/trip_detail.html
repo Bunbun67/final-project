@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ trip.name }}{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center font-semibold">{{ trip.name }}</h2>
+<p class="text-center font-semibold">Total Trip Budget: ${{ trip.budget }}</p>
+
+<hr>
+
+<h3 class="text-center" >Add a Country</h3>
+<form method="POST" action="{{ url_for('add_country', trip_id=trip.id) }}">
+    <label>Country Name</label><br>
+    <input type="text" name="name" class = "w-full p-1 mb-4 rounded border" required><br><br>
+
+    <label>Country Budget</label><br>
+    <input type="number" name="budget" min="0" class = "w-full p-1 mb-4 rounded border" ><br><br>
+
+    <button type="submit" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-700 transition-colors border-black">Add </button>
+</form>
+
+<hr>
+
+<h3>Countries</h3>
+
+{% if trip.countries %}
+    {% for country in trip.countries %}
+        <div id = "countries">
+            <h4>{{ country.name }}</h4>
+
+            {% set total_spent = country.expenses | sum (attribute = 'amount %')}
+            <p class="font-semibold">
+                Budget: ${{ country.budget }} <br>
+                Spent: ${{ expense.amount }} <br>
+                Remaining: ${{ country.budget - expense.amount }}
+            </p>
+
+            <h5>Add Expense</h5>
+            <form method="POST" action="{{ url_for('add_expense', country_id=country.id) }}">
+                <input type="text" name="description" placeholder="Description" class = "w-full p-1 mb-4 rounded border" required>
+                <input type="number" name="amount" min="0" class = "w-full p-1 mb-4 rounded border" required>
+                <button type="submit" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-700 transition-colors border-black">Add</button>
+            </form>
+
+            {% if country.expenses %}
+                <ul>
+                    {% for expense in country.expenses %}
+                        <li>
+                            {{ expense.description }} — ${{ expense.amount }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No expenses yet.</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No countries added yet.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}">← Back to Home</a>
+
+{% endblock %}
