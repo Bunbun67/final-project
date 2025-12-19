@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h2 class="text-center font-semibold">Register</h2>
+<div class="flex items-center justify-center bg-gray-100">
+    <form method="POST">
+        <input name="name" type="text" placeholder="Name" class = "w-full p-1 mb-4 rounded border"  required><br><br>
+        <input name="email" type="text" placeholder="Email" class = "w-full p-1 mb-4 rounded border" required><br><br>
+        <input name="password" type="password" placeholder="Password" class = "w-full p-1 mb-4 rounded border" required><br><br>
+        <button type="submit" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-700 transition-colors border-black">Register</button>
+    </form>
+</div>
+{% endblock %}
