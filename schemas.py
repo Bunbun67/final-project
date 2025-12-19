@@ -7,8 +7,6 @@ class UserSchema(Schema):
     email = fields.Email(required=True)
     password = fields.Str(load_only=True, required=True)
 
-
-
 # Trip schema
 class TripSchema(Schema):
     id = fields.Int(dump_only=True)
@@ -17,8 +15,6 @@ class TripSchema(Schema):
     end_date = fields.Date()
     user_id = fields.Int(dump_only=True)
 
-
-
 # Country schema
 class CountrySchema(Schema):
     id = fields.Int(dump_only=True)
@@ -26,14 +22,12 @@ class CountrySchema(Schema):
     budget = fields.Float()
     trip_id = fields.Int(dump_only=True)
 
-
 # Expense schema
 class ExpenseSchema(Schema):
     id = fields.Int(dump_only=True)
     description = fields.Str(required=True)
     amount = fields.Float(required=True)
     country_id = fields.Int(dump_only=True)
-    
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
