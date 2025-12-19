@@ -1,0 +1,9 @@
+This is a Trip Planner Project. The idea behind this is that when going on a big trip
+you can use this application to brreak it down. So each country has its own set budget and
+you have your own big bugdet for the entire trip.
+I used Marshmallow for data validation and serialization 
+Also used Tailwind for CSS- Tailwind may have caused some inconsistencies in the design 
+
+Struggled with the jinja but created a base html and had other files extend that
+
+What I learned: Tailwind and Marshmallow, How to deploy a site 
